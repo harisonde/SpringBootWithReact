@@ -10,4 +10,4 @@ class Home extends Component{
 }
 export default Home;
 
-ReactDOM.render(<Home/>, document.getElementById("create-article-form"));
+ReactDOM.render(<Home/>, document.getElementById("mainDiv"));
