@@ -1,6 +1,8 @@
 applications:
 - name: spring-boot-react
   instances: 1
+  buildpack: https://github.com/cloudfoundry/java-buildpack
+  path: build/libs/SpringBootWithReact.jar
   services:
   - mangoDbService
   env:
