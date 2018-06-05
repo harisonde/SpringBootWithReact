@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
+    "babel-preset-es2015": "^6.24.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "semantic-ui-css": "^2.3.1",

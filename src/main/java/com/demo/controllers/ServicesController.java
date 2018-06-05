@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value="/api")
+@CrossOrigin
 public class ServicesController {
 	@Autowired
 	private StudentsService studentsService;
