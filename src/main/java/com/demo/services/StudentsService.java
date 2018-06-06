@@ -8,6 +8,9 @@ import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class StudentsService {
     @Autowired
@@ -23,16 +26,13 @@ public class StudentsService {
         System.out.println("Document inserted into database");
     }
 
-    public Document retrieveStudentInformationByFirstName(String firstName){
-        Document returnValue = null;
+    public List<Document> retrieveStudentInformationByFirstName(String firstName){
+        List<Document> returnValue = new ArrayList<>();
         MongoDatabase database = databaseHelper.getDabaseObject();
         MongoCollection<Document> studentCollection = database.getCollection("students");
 
        MongoCursor<Document> result = studentCollection.find(new Document("firstName", firstName)).iterator();
-      while(result.hasNext()){
-          returnValue = result.next();
-          break;
-      }
-      return returnValue;
+       result.forEachRemaining(returnValue::add);
+       return returnValue;
     }
 }

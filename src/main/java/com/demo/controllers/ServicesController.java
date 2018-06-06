@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value="/api")
 @CrossOrigin
@@ -30,8 +32,8 @@ public class ServicesController {
 	}
 
 	@GetMapping(value="/student/retrieveByFirstName")
-	public ResponseEntity<Document> retrieveStudentByFirstName(@RequestParam("firstName") String firstName){
-		Document result = studentsService.retrieveStudentInformationByFirstName(firstName);
+	public ResponseEntity<List<Document>> retrieveStudentByFirstName(@RequestParam("firstName") String firstName){
+		List<Document> result = studentsService.retrieveStudentInformationByFirstName(firstName);
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
