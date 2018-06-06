@@ -18,9 +18,13 @@ class Home extends Component{
   }
 
  addStudent(){
+  const params = {
+     firstName: this.state.firstName,
+     lastName: this.state.lastName,
+     id: this.state.id
+   };
    this.setState({addStudentLoading: true, studentAddedMessage: false});
-    Axios.get('/api/student/add?firstName='+this.state.firstName
-     +'&lastName='+ this.state.lastName + '&id=' + this.state.id, {})
+    Axios.get('/api/student/add',{params})
      .then((response) => {
        if(response.status === 200){
           this.setState({studentAddedMessage: true, addStudentLoading: false});
@@ -35,11 +39,10 @@ class Home extends Component{
     return(
       <div style={{width:'100%', height: '610px'}}>
         <MenuComponent/>
+        <br/>
         <center><h4>Welcome to Student DashBoard!</h4></center>
-        <hr/>
         <br/>
 
-        <center><h3><u>Add Student</u></h3></center>
         <hr/>
         <br/>
         <Input type='text'
@@ -72,6 +75,7 @@ class Home extends Component{
             <center><Label size='large'>Student information successfully added!!!</Label></center>
           </div>
         }
+        <br/>
         <br/>
         <hr/>
 
